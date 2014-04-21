@@ -86,7 +86,7 @@ public class VKOpenAuthActivity extends Activity {
 	                            "&redirect_uri=%s" +
 	                            "&display=mobile" +
 	                            "&v=%s" +
-	                            "&response_type=token&revoke=%d",
+	                            "&response_type=code&revoke=%d",
 	                    appId, scope, REDIRECT_URL, apiV, revoke ? 1 : 0);
 	        }
             mWebView = (WebView) findViewById(android.R.id.copyUrl);

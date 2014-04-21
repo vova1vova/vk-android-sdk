@@ -241,8 +241,12 @@ public class VKSdk {
                 if (result.hasExtra(VKOpenAuthActivity.VK_EXTRA_TOKEN_DATA)) {
                     String tokenInfo = result.getStringExtra(VKOpenAuthActivity.VK_EXTRA_TOKEN_DATA);
                     Map<String, String> tokenParams = VKUtil.explodeQueryString(tokenInfo);
-                    boolean renew = result.getBooleanExtra(VKOpenAuthActivity.VK_EXTRA_VALIDATION_URL, false);
-                    checkAndSetToken(tokenParams, renew);
+
+                    String code = tokenParams.get("code");
+                    sInstance.mListener.onReceiveNewCode(code);
+
+//                    boolean renew = result.getBooleanExtra(VKOpenAuthActivity.VK_EXTRA_VALIDATION_URL, false);
+//                    checkAndSetToken(tokenParams, renew);
                 } else if (result.getExtras() != null) {
                     setAccessTokenError(new VKError(VKError.VK_API_CANCELED));
                 }

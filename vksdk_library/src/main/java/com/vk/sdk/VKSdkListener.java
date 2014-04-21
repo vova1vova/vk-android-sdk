@@ -74,4 +74,11 @@ public abstract class VKSdkListener {
 	public void onRenewAccessToken(VKAccessToken token) {
 	}
 
+    /**
+     * Notifies listener about receiving new code
+     *
+     * @param code new code for API requests
+     */
+    public void onReceiveNewCode(String code) {
+    }
 }
