@@ -46,14 +46,14 @@ public class VKSdk {
     /**
      * Start SDK activity for result with that request code
      */
-    public static final int VK_SDK_REQUEST_CODE = 0xf228;
+    public static final int VK_SDK_REQUEST_CODE = 0xf230;
 
     /**
      * Instance of SDK
      */
     private static volatile VKSdk sInstance;
 
-    private static final String VK_SDK_ACCESS_TOKEN_PREF_KEY = "VK_SDK_ACCESS_TOKEN_PLEASE_DONT_TOUCH";
+    private static final String VK_SDK_ACCESS_TOKEN_PREF_KEY = "VK_SDK_WEB_ACCESS_TOKEN_PLEASE_DONT_TOUCH";
 
     /**
      * Responder for global SDK events
