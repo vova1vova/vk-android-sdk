@@ -40,7 +40,7 @@ import java.util.Map;
 /**
  * Entry point of SDK. See example for using properly
  */
-public class VKSdk {
+public class VKSdkWeb {
 
     public static final boolean DEBUG = true;
     /**
@@ -51,7 +51,7 @@ public class VKSdk {
     /**
      * Instance of SDK
      */
-    private static volatile VKSdk sInstance;
+    private static volatile VKSdkWeb sInstance;
 
     private static final String VK_SDK_ACCESS_TOKEN_PREF_KEY = "VK_SDK_ACCESS_TOKEN_PLEASE_DONT_TOUCH";
 
@@ -71,7 +71,7 @@ public class VKSdk {
     private String mCurrentAppId;
 
 
-    private VKSdk() {
+    private VKSdkWeb() {
 
     }
 
@@ -94,7 +94,7 @@ public class VKSdk {
     /**
      * Returns instance of VK sdk. You should never use that directly
      */
-    public static VKSdk instance() {
+    public static VKSdkWeb instance() {
         return sInstance;
     }
 
@@ -115,9 +115,9 @@ public class VKSdk {
 
         // Double checked locking singleton, for thread safety VKSdk.initialize() calls
         if (sInstance == null) {
-            synchronized (VKSdk.class) {
+            synchronized (VKSdkWeb.class) {
                 if (sInstance == null) {
-                    sInstance = new VKSdk();
+                    sInstance = new VKSdkWeb();
                 }
             }
         }
@@ -169,7 +169,7 @@ public class VKSdk {
         try {
             checkConditions();
         } catch (Exception e) {
-            if (VKSdk.DEBUG)
+            if (VKSdkWeb.DEBUG)
                 e.printStackTrace();
             return;
         }

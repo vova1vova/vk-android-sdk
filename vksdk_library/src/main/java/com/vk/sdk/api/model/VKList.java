@@ -24,8 +24,7 @@ package com.vk.sdk.api.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.vk.sdk.VKSdk;
-import com.vk.sdk.api.VKApi;
+import com.vk.sdk.VKSdkWeb;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -168,7 +167,7 @@ public class VKList<T extends VKApiModel & Parcelable & Identifiable> extends VK
                         items.add(object);
                     }
                 } catch (Exception e) {
-                    if (VKSdk.DEBUG)
+                    if (VKSdkWeb.DEBUG)
                         e.printStackTrace();
                 }
             }

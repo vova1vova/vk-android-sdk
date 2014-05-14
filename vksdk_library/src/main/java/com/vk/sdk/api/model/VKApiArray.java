@@ -21,7 +21,7 @@
 
 package com.vk.sdk.api.model;
 
-import com.vk.sdk.VKSdk;
+import com.vk.sdk.VKSdkWeb;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +50,7 @@ public abstract class VKApiArray<T extends VKApiModel> extends VKApiModel {
             parse(jsonArray);
 
         } catch (JSONException e) {
-            if (VKSdk.DEBUG)
+            if (VKSdkWeb.DEBUG)
                 e.printStackTrace();
         }
         fields = object;
@@ -62,7 +62,7 @@ public abstract class VKApiArray<T extends VKApiModel> extends VKApiModel {
             try {
                 items.add(parseNextObject(jsonArray.getJSONObject(i)));
             } catch (JSONException e) {
-                if (VKSdk.DEBUG)
+                if (VKSdkWeb.DEBUG)
                     e.printStackTrace();
             }
         }

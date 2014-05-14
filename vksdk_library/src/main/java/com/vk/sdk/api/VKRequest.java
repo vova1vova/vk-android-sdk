@@ -26,7 +26,7 @@ import android.content.Intent;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKObject;
 import com.vk.sdk.VKOpenAuthActivity;
-import com.vk.sdk.VKSdk;
+import com.vk.sdk.VKSdkWeb;
 import com.vk.sdk.VKSdkVersion;
 import com.vk.sdk.VKUIHelper;
 import com.vk.sdk.api.httpClient.VKAbstractOperation;
@@ -45,7 +45,6 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Locale;
 
 /**
@@ -241,7 +240,7 @@ public class VKRequest extends VKObject {
             mPreparedParameters = new VKParameters(mMethodParameters);
 
             //Set current access token from SDK object
-            VKAccessToken token = VKSdk.getAccessToken();
+            VKAccessToken token = VKSdkWeb.getAccessToken();
 	        if (token != null)
                 mPreparedParameters.put(VKApiConst.ACCESS_TOKEN, token.accessToken);
             if (!this.secure)
@@ -303,7 +302,7 @@ public class VKRequest extends VKObject {
                                 if (processCommonError(error)) return;
                                 provideError(error);
                             } catch (JSONException e) {
-                                if (VKSdk.DEBUG)
+                                if (VKSdkWeb.DEBUG)
                                     e.printStackTrace();
                             }
 
@@ -443,17 +442,17 @@ public class VKRequest extends VKObject {
             if (error.apiError.errorCode == 14) {
                 error.apiError.request = this;
                 this.mLoadingOperation = null;
-                VKSdk.instance().sdkListener().onCaptchaError(error.apiError);
+                VKSdkWeb.instance().sdkListener().onCaptchaError(error.apiError);
                 return true;
             } else if (error.apiError.errorCode == 16) {
-                VKAccessToken token = VKSdk.getAccessToken();
+                VKAccessToken token = VKSdkWeb.getAccessToken();
                 token.httpsRequired = true;
                 repeat();
                 return true;
             } else if (error.apiError.errorCode == 17) {
 	            Intent i = new Intent(VKUIHelper.getTopActivity(), VKOpenAuthActivity.class);
 	            i.putExtra(VKOpenAuthActivity.VK_EXTRA_VALIDATION_URL, error.apiError.redirectUri);
-				VKUIHelper.getTopActivity().startActivityForResult(i, VKSdk.VK_SDK_REQUEST_CODE);
+				VKUIHelper.getTopActivity().startActivityForResult(i, VKSdkWeb.VK_SDK_REQUEST_CODE);
                 return true;
             }
         }

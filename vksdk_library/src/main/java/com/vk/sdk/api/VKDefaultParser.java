@@ -21,7 +21,7 @@
 
 package com.vk.sdk.api;
 
-import com.vk.sdk.VKSdk;
+import com.vk.sdk.VKSdkWeb;
 import com.vk.sdk.api.model.VKApiModel;
 import org.json.JSONObject;
 
@@ -37,7 +37,7 @@ public class VKDefaultParser extends VKParser {
             model.parse(object);
             return model;
         } catch (Exception e) {
-            if (VKSdk.DEBUG)
+            if (VKSdkWeb.DEBUG)
                 e.printStackTrace();
         }
         return null;

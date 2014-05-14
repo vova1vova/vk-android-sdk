@@ -66,8 +66,8 @@ public class VKUIHelper {
      * @param data Result data
      */
     public static void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == VKSdk.VK_SDK_REQUEST_CODE) {
-            VKSdk.processActivityResult(resultCode, data);
+        if (requestCode == VKSdkWeb.VK_SDK_REQUEST_CODE) {
+            VKSdkWeb.processActivityResult(resultCode, data);
         }
     }
 }

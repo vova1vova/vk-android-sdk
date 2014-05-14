@@ -32,7 +32,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -168,7 +167,7 @@ public class VKOpenAuthActivity extends Activity {
             try {
                 builder.show();
             } catch (Exception e) {
-                if (VKSdk.DEBUG)
+                if (VKSdkWeb.DEBUG)
                 	e.printStackTrace();
             }
         }
